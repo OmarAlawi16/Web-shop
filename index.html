@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Webshop</title>
+</head>
+
+<body>
+  <main>
+    <header>
+      <div class="logo">
+        <h1 class="main-text">POWERMOB</h1>
+        <p class="sub-text">Powerful Gaming Smartphones</p>
+      </div>
+    </header>
+
+    <div class="categoryContainer">
+      <h2 class="category">Gaming phones</h2>
+      <button id="toggleButton">🌞</button>
+    </div>
+
+    <section class="sortAndCartContainer">
+      <div>
+        <label for="sortOptions">Sort the products:</label>
+        <select id="sortOptions">
+          <option value="recommended" selected>Customers favorite</option>
+          <option value="price">Price</option>
+          <option value="memory">Memory</option>
+          <option value="rating">Rating</option>
+          <option value="5g">5G Mobiles</option>
+          <option value="6g">6G Mobiles</option>
+        </select>
+      </div>
+
+      <div class="cart-icon" tabindex="0" role="button" aria-label="View Cart">
+        <img class="svgImg" src="/assets/icons/cart-icon.svg" alt="Cart Icon" />
+        <span id="cart-count">0</span>
+      </div>
+
+    </section>
+
+    <section id="products-list">
+      <!-- Filled by JavaScript -->
+    </section>
+
+    <section class="cart">
+      <h2>Cart Summery:</h2>
+      <!-- List of products added to the cart - generated with JS -->
+      <div id="cart-summary">The cart is empty</div>
+    </section>
+
+    <div class="payment-options">
+      <h2>Personal Information</h2>
+      <form action="/submit-order" method="POST" class="payment-form" id="orderForm">
+        <fieldset class="personal">
+          <legend>Enter Your Details</legend>
+          <label>
+            <span>First Name</span>
+            <input type="text" id="firstName" name="first-name" placeholder="First Name" required />
+          </label>
+          <label>
+            <span>Last Name</span>
+            <input type="text" id="lastName" name="last-name" placeholder="Last Name" required />
+          </label>
+          <label>
+            <span>Street Address</span>
+            <input type="text" id="address" name="address" placeholder="Street Address" required />
+          </label>
+          <label>
+            <span>Postal Code</span>
+            <input type="text" id="postalCode" name="postal-code" placeholder="Postal Code" required />
+          </label>
+          <label>
+            <span>City</span>
+            <input type="text" id="city" name="city" placeholder="City" required />
+          </label>
+          <label>
+            <span>Gate Code (optional)</span>
+            <input type="text" id="gateCode" name="gate-code" placeholder="Gate Code" />
+          </label>
+          <label>
+            <span>Phone (mobile)</span>
+            <input type="tel" id="phone" name="phone" placeholder="Phone Number" required />
+          </label>
+          <label>
+            <span>Email Address</span>
+            <input type="email" id="email" name="email" placeholder="Email Address" required />
+          </label>
+        </fieldset>
+
+        <h2>Select Payment Method</h2>
+        <fieldset class="selector">
+          <legend>Payment Method</legend>
+          <label>
+            <input type="radio" name="payment-option" value="invoice" />
+            <span>Invoice</span>
+          </label>
+          <label>
+            <input type="radio" name="payment-option" value="card" checked />
+            <span>Card</span>
+          </label>
+
+          <div class="invoice hidden" id="invoice">
+            <label>
+              <span>Personal ID</span>
+              <input type="text" name="personal-id" id="personalId" placeholder="YYYYMMDD-XXXX" />
+            </label>
+          </div>
+
+          <div class="card" id="card">
+            <label>
+              <span>Card Number</span>
+              <input type="number" id="creditCardNumber" placeholder="5100080000000000" />
+            </label>
+            <label>
+              <span>Expiry Date</span>
+              <span>
+                <input type="number" class="small" placeholder="YY" id="creditCardYear" />/<input type="number"
+                  class="small" placeholder="MM" id="creditCardMonth" />
+              </span>
+            </label>
+            <label>
+              <span>CVC</span>
+              <input type="number" placeholder="123" id="creditCardCvc" />
+            </label>
+          </div>
+        </fieldset>
+
+        <h2>Additional Options</h2>
+        <fieldset>
+          <legend>Extra Options</legend>
+          <label>
+            <input type="checkbox" id="gdprConsent" name="gdprconsent" required />
+            <span>I consent to the processing of my personal data</span>
+          </label>
+          <label>
+            <input type="checkbox" id="newsletter" name="newsletter" checked />
+            <span>I want to subscribe to the newsletter</span>
+          </label>
+        </fieldset>
+
+        <h2>Discount Code</h2>
+        <fieldset>
+          <legend>Apply Discount</legend>
+          <label>
+            <span>Enter Discount Code</span>
+            <input type="text" id="discountCode" name="discount-code" placeholder="Enter Discount Code" />
+          </label>
+        </fieldset>
+
+        <br />
+        <div class="form-buttons">
+          <button type="button" id="resetBtn">Clear Order</button>
+          <button id="orderBtn" type="submit" disabled>Place Order</button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2035 POWERMOB. All rights reserved.</p>
+  </footer>
+
+  <script type="module" src="/src/main.mjs"></script>
+</body>
+
+</html>

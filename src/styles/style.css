@@ -1,103 +1,451 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@charset "UTF-8";
+body.light-mode,
+.light-mode article,
+.light-mode section,
+.light-mode div,
+.light-mode input,
+.light-mode select {
+  background-color: #f4f4f4 !important;
+  background: none !important;
+  color: #333;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+body.light-mode h2,
+body.light-mode h3 {
+  color: #333;
 }
 
-a:hover {
-  color: #535bf2;
+body.light-mode .sub-text {
+  color: #333;
+}
+
+body.light-mode .svgImg {
+  filter: invert(0%) sepia(1%) saturate(7486%) hue-rotate(32deg) brightness(99%) contrast(100%);
 }
 
 body {
-  margin: 0;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.2rem;
+  background: linear-gradient(135deg, #0d1117, #21262d);
+  color: #e0e0e0;
+  line-height: 1.6;
+  padding: 0 10px 0 10px;
+}
+
+.categoryContainer,
+.sortAndCartContainer {
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  justify-content: space-between;
+  align-items: center;
 }
 
+#toggleButton {
+  background-color: #0077ff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+body.light-mode #toggleButton {
+  background-color: #333;
+  color: #fff;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Grundinställningar för rubriker */
+@keyframes glow {
+  0% {
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5), 0px 0px 10px #0077ff, 0px 0px 20px #0077ff, 0px 0px 30px #0077ff, 0px 0px 40px #0077ff;
+  }
+  50% {
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5), 0px 0px 20px #0077ff, 0px 0px 30px #0077ff, 0px 0px 40px #0077ff, 0px 0px 50px #0077ff;
+  }
+  100% {
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5), 0px 0px 10px #0077ff, 0px 0px 20px #0077ff, 0px 0px 30px #0077ff, 0px 0px 40px #0077ff;
+  }
+}
 h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+  margin-top: 20px;
+  font-size: 60px;
+  font-weight: 900;
+  text-transform: uppercase;
+  box-shadow: 0 0 10px #00ffff, 0 0 20px #0077ff; /* Skapar en glödande effekt */
+  border: 2px solid #0077ff;
+  border-radius: 15px;
+  padding: 10px;
+  background: linear-gradient(90deg, #0077ff, #0077ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: black;
+  text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5), 0px 0px 10px #0077ff, 0px 0px 20px #0077ff, 0px 0px 30px #0077ff, 0px 0px 40px #0077ff;
+  animation: glow 0.5s infinite alternate; /* Pulsating glow effect */
+  padding: 10px;
+  display: inline-block;
 }
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+.category,
+.totalPrice,
+.product h3,
+h2 {
+  margin: 0;
+  background: linear-gradient(90deg, #00ffff, #0077ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: black;
+  text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5), 0px 0px 10px #0077ff, 0px 0px 20px #0077ff, 0px 0px 30px #00ffff, 0px 0px 40px #00ffff; /* Strong outer glow */
+  padding: 10px;
+  display: inline-block;
+}
+
+h2 {
+  font-size: 2.5rem;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+  text-align: center;
+  color: #fff;
 }
 
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+.sub-text {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: #ffffff;
+  text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.7);
+  margin-top: 10px;
+  margin-bottom: 30px;
 }
 
-.logo.vanilla:hover {
-  filter: drop-shadow(0 0 2em #f7df1eaa);
+/* Styling för Gaming Phones och varukorg */
+.products-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Gör så att varukorgen flyter till höger */
+  margin-bottom: 1rem;
 }
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+.products-header .cart-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
   cursor: pointer;
-  transition: border-color 0.25s;
+}
+.products-header .cart-icon #cart-count {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  background-color: #ff0000;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: bold;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-button:hover {
-  border-color: #646cff;
+.svgImg {
+  width: 30px; /* Storlek på ikonen */
+  height: 40px;
+  transition: transform 0.3s ease;
+  filter: invert(100%) sepia(0%) saturate(1176%) hue-rotate(293deg) brightness(117%) contrast(100%);
+}
+.svgImg:hover {
+  transform: scale(1.5); /* Gör ikonen större vid hover */
 }
 
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+/* Produktsektion */
+#products-list {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr); /* Default: 1 produkt per rad */
+  gap: 1rem; /* Avstånd mellan produkterna */
+  margin-top: 1rem;
+}
+@media (min-width: 768px) {
+  #products-list {
+    /* Tablet-läge */
+    grid-template-columns: repeat(2, 1fr); /* 2 produkter per rad */
+  }
+}
+@media (min-width: 1276px) {
+  #products-list {
+    /* Desktop-läge */
+    grid-template-columns: repeat(5, 1fr); /* 5 produkter per rad */
+  }
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+/* Produktkort */
+.product {
+  border-radius: 50px;
+  background: #1c1f26;
+  padding: 1rem;
+  margin-bottom: 20px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s, box-shadow 0.2s;
+  /* Knappstil */
+  /* Anpassningar för mobilläge */
+}
+.product:hover {
+  transform: scale(1.02);
+  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.5);
+}
+.product input {
+  border-radius: 15px;
+  width: 100px;
+  text-align: center;
+}
+.product h3 {
+  font-size: 1rem;
+}
+.product button {
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  margin: 0.2rem;
+  background: #0077ff;
+  color: #fff;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.product button:hover {
+  background: #00bfff;
+}
+@media (max-width: 768px) {
+  .product {
+    /* Göm standardknapparna i mobilläge */
   }
+  .product body {
+    font-size: 1rem;
+  }
+  .product h1 {
+    font-size: 3rem;
+  }
+  .product h2 {
+    font-size: 2rem;
+  }
+  .product h3 {
+    font-size: 1.5rem;
+  }
+  .product .product {
+    padding: 0.8rem;
+  }
+  .product .decrease::before {
+    content: "-";
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  .product .increase::before {
+    content: "+";
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  .product .amountContainer {
+    display: flex;
+    justify-content: center;
+  }
+  .product .decrease,
+  .product .increase {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    font-size: 0; /* Dölj textinnehåll */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #0077ff;
+    color: #fff;
+    border-radius: 50%;
+    transition: background 0.3s;
+  }
+  .product .decrease:hover,
+  .product .increase:hover {
+    background: #00bfff;
+  }
+}
 
-  a:hover {
-    color: #747bff;
-  }
+.product h3 {
+  font-size: 1.8rem;
+  color: #0077ff;
+}
 
-  button {
-    background-color: #f9f9f9;
-  }
+.product img {
+  display: block;
+  max-width: 100%;
+  margin: 0 auto 1rem;
+  border-radius: 8px;
+}
+
+/* Varukorg */
+.cart {
+  padding: 1rem;
+  background: rgba(32, 34, 37, 0.9);
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+  color: #fff;
+}
+.cart div {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.cart div img {
+  max-width: 50px; /* Anpassa storleken på bilderna */
+  height: auto;
+  border-radius: 5px;
+}
+.cart div p {
+  font-size: 1.2rem;
+  margin: 0;
+}
+.cart p {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+/* Formulär */
+.payment-options {
+  background: rgba(32, 34, 37, 0.9);
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+  margin-top: 2rem;
+}
+.payment-options label {
+  display: block;
+  margin-bottom: 1rem;
+}
+.payment-options label span {
+  display: inline-block;
+  width: 150px;
+  font-weight: bold;
+}
+.payment-options input {
+  padding: 0.5rem;
+  border: 1px solid #444;
+  border-radius: 5px;
+  background: #0d1117;
+  color: #fff;
+}
+.payment-options input:focus {
+  border-color: #0077ff;
+  outline: none;
+}
+.payment-options button {
+  padding: 0.8rem 2rem;
+  font-size: 1.2rem;
+  background: #0077ff;
+  border: none;
+  border-radius: 8px;
+  color: #000;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.payment-options button:hover {
+  background: green;
+  color: #fff;
+}
+.payment-options button:disabled {
+  background: #333;
+  color: #777;
+  cursor: not-allowed;
+}
+
+/* Dropdown */
+select {
+  padding: 0.5rem;
+  background: #1c1f26;
+  color: #0077ff;
+  border: 1px solid #444;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+select:focus {
+  border-color: #0077ff;
+  outline: none;
+}
+
+/* Göm standardknapparna i mobilläge */
+.decrease {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.increase {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.amountContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.decrease,
+.increase {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  font-size: 0; /* Dölj textinnehåll */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #0077ff;
+  color: #fff;
+  border-radius: 50%;
+  transition: background 0.3s;
+}
+.decrease:hover,
+.increase:hover {
+  background: #00bfff;
+}
+
+footer {
+  text-align: center; /* Centrera texten */
+  padding: 10px 0; /* Lägger till lite utrymme ovanför och under */
+  font-size: 0.9rem; /* Gör texten lite mindre */
+  font-family: Arial, sans-serif; /* Ren och modern font */
+}
+
+footer p {
+  margin: 0; /* Tar bort standardmarginalen för p-element */
+}
+
+p,
+h3 {
+  margin: 0;
+  padding: 0;
+}
+
+/* Gör fokus tydligt för radioknappar */
+input[type=radio]:focus,
+input[type=checkbox]:focus {
+  outline: 2px solid #007bff; /* Blå kant vid fokus */
+  outline-offset: 2px; /* Skapa lite mellanrum mellan kanten och knappen */
+  border-radius: 4px; /* Lägg till rundade hörn för fokusmarkeringen */
+}
+
+/* Alternativ: Använd :focus-visible för att endast synas vid tangentbordsnavigation */
+input[type=radio]:focus-visible,
+input[type=checkbox]:focus-visible {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
 }

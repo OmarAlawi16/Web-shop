@@ -1,5 +1,4 @@
-import '/src/styles/style.scss'
-import products from './products'
+import products from './products.js'
 
 // Variabel för att hålla reda på det aktuella sorteringsalternativet
 let currentSortOption = 'recommended' // Standardvärde
